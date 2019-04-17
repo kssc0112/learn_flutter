@@ -5,7 +5,6 @@ import './pokemon.dart';
 class PokemonManager extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _PokemonManagerState();
   }
 }
@@ -15,7 +14,6 @@ class _PokemonManagerState extends State<PokemonManager> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Column(children: <Widget>[
       Container(
         margin: EdgeInsets.all(10.0),
@@ -23,7 +21,6 @@ class _PokemonManagerState extends State<PokemonManager> {
           onPressed: () {
             setState(() {
               _pokemonList.add('Charmander');
-              print(_pokemonList);
             });
           },
           child: Text('Button'),
