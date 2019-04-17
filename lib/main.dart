@@ -1,41 +1,19 @@
 import 'package:flutter/material.dart';
 
+import './pokemon_manager.dart';
+
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MyAppState();
-  }
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
+        home: Scaffold(
           appBar: AppBar(
-            title: Text('Hello world'),
+            title: Text('Pokemon'),
           ),
-          body: Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(10.0),
-                child: RaisedButton(
-                  onPressed: () {},
-                  child: Text('Button'),
-                ),
-              ),
-              Card(
-                child: Column(
-                  children: <Widget>[
-                    Image.asset('assets/pickachu.jpg'),
-                    Text('pickachu')
-                  ],
-                ),
-              ),
-            ],
-          )),
+          body: PokemonManager(),
+        )
     );
   }
 }
