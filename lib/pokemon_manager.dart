@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import './pokemon.dart';
+import './pokemons.dart';
 import './pokemon_control.dart';
 
 class PokemonManager extends StatefulWidget {
   final String firstPokemon;
 
-  PokemonManager({this.firstPokemon = 'Charmander'});
+  PokemonManager({this.firstPokemon});
 
   @override
   State<StatefulWidget> createState() {
@@ -20,7 +20,9 @@ class _PokemonManagerState extends State<PokemonManager> {
   @override
   void initState() {
     super.initState();
-    _pokemonList.add(widget.firstPokemon);
+    if (widget.firstPokemon != null) {
+      _pokemonList.add(widget.firstPokemon);
+    }
   }
 
   @override
@@ -30,7 +32,9 @@ class _PokemonManagerState extends State<PokemonManager> {
         margin: EdgeInsets.all(10.0),
         child: PokemonControl(addPokemon),
       ),
-      Pokemon(_pokemonList)
+      Expanded(
+        child: Pokemons(_pokemonList),
+      )
     ]);
   }
 

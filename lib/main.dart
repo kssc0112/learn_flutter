@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text('Pokemon'),
           ),
-          body: PokemonManager(firstPokemon: 'Pickachu'),
+          body: PokemonManager(),
         ));
   }
 }
