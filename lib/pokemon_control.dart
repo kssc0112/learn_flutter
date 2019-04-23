@@ -11,7 +11,7 @@ class PokemonControl extends StatelessWidget {
     return RaisedButton(
       color: Theme.of(context).primaryColor,
       onPressed: () {
-        _addPokemon('Charmander');
+        _addPokemon({'name': 'Pickachu', 'imageUrl': 'assets/pickachu.jpg'});
       },
       child: Text('Button'),
     );

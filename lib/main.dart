@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './pokemon_manager.dart';
+import './pages/home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,11 +11,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.deepOrange,
             accentColor: Colors.deepPurpleAccent),
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Pokemon'),
-          ),
-          body: PokemonManager(),
-        ));
+        home: HomePage());
   }
 }

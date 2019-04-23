@@ -4,7 +4,7 @@ import './pokemons.dart';
 import './pokemon_control.dart';
 
 class PokemonManager extends StatefulWidget {
-  final String firstPokemon;
+  final Map<String, dynamic> firstPokemon;
 
   PokemonManager({this.firstPokemon});
 
@@ -15,7 +15,7 @@ class PokemonManager extends StatefulWidget {
 }
 
 class _PokemonManagerState extends State<PokemonManager> {
-  List<String> _pokemonList = [];
+  List<Map<String, dynamic>> _pokemonList = [];
 
   @override
   void initState() {
@@ -30,17 +30,26 @@ class _PokemonManagerState extends State<PokemonManager> {
     return Column(children: <Widget>[
       Container(
         margin: EdgeInsets.all(10.0),
-        child: PokemonControl(addPokemon),
+        child: PokemonControl(_addPokemon),
       ),
       Expanded(
-        child: Pokemons(_pokemonList),
+        child: Pokemons(
+          _pokemonList,
+          deletePokemon: _deletePokemon,
+        ),
       )
     ]);
   }
 
-  void addPokemon(String pokemon) {
+  void _addPokemon(Map<String, dynamic> pokemon) {
     setState(() {
       _pokemonList.add(pokemon);
+    });
+  }
+
+  void _deletePokemon(int index) {
+    setState(() {
+      _pokemonList.removeAt(index);
     });
   }
 }
