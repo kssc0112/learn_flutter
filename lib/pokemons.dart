@@ -22,7 +22,6 @@ class Pokemons extends StatelessWidget {
                               context, '/pokemon/' + index.toString())
                           .then((bool onValue) {
                         if (onValue) {
-                          print(onValue);
                           deletePokemon(index);
                         }
                       })

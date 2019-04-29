@@ -10,7 +10,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppState();
   }
 }
@@ -21,31 +20,37 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-            primarySwatch: Colors.deepOrange,
-            accentColor: Colors.deepPurpleAccent),
+      theme: ThemeData(
+          primarySwatch: Colors.deepOrange,
+          accentColor: Colors.deepPurpleAccent),
 //      home: AuthPage(),
-        routes: {
-          '/': (BuildContext context) =>
-              HomePage(_pokemonList, _addPokemon, _deletePokemon),
-          '/admin': (BuildContext context) => PokemonAdminPage(),
+      routes: {
+        '/': (BuildContext context) =>
+            HomePage(_pokemonList, _addPokemon, _deletePokemon),
+        '/admin': (BuildContext context) => PokemonAdminPage(),
 //        '/pokemon': (BuildContext context) => PokemonPage(),
-        },
-        onGenerateRoute: (RouteSettings routeSettings) {
-          final List<String> pathElements = routeSettings.name.split('/');
-          if (pathElements[0] != '') {
-            return null;
-          }
-          if (pathElements[1] == 'pokemon') {
-            final int index = int.parse(pathElements[2]);
-            return MaterialPageRoute<bool>(
-                builder: (BuildContext context) => PokemonPage(
-                      name: _pokemonList[index]['name'],
-                      imageUrl: _pokemonList[index]['imageUrl'],
-                    ));
-          }
+      },
+      onGenerateRoute: (RouteSettings routeSettings) {
+        final List<String> pathElements = routeSettings.name.split('/');
+        if (pathElements[0] != '') {
           return null;
-        });
+        }
+        if (pathElements[1] == 'pokemon') {
+          final int index = int.parse(pathElements[2]);
+          return MaterialPageRoute<bool>(
+              builder: (BuildContext context) => PokemonPage(
+                    name: _pokemonList[index]['name'],
+                    imageUrl: _pokemonList[index]['imageUrl'],
+                  ));
+        }
+        return null;
+      },
+      onUnknownRoute: (RouteSettings routeSettings) {
+        return MaterialPageRoute(
+            builder: (BuildContext context) =>
+                HomePage(_pokemonList, _addPokemon, _deletePokemon));
+      },
+    );
   }
 
   void _addPokemon(Map<String, dynamic> pokemon) {
