@@ -3,27 +3,12 @@ import 'package:flutter/material.dart';
 import './pokemons.dart';
 import './pokemon_control.dart';
 
-class PokemonManager extends StatefulWidget {
-  final Map<String, dynamic> firstPokemon;
+class PokemonManager extends StatelessWidget {
+  final List<Map<String, String>> _pokemonList;
+  final Function _addPokemon;
+  final Function _deletePokemon;
 
-  PokemonManager({this.firstPokemon});
-
-  @override
-  State<StatefulWidget> createState() {
-    return _PokemonManagerState();
-  }
-}
-
-class _PokemonManagerState extends State<PokemonManager> {
-  List<Map<String, dynamic>> _pokemonList = [];
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.firstPokemon != null) {
-      _pokemonList.add(widget.firstPokemon);
-    }
-  }
+  PokemonManager(this._pokemonList, this._addPokemon, this._deletePokemon);
 
   @override
   Widget build(BuildContext context) {
@@ -39,17 +24,5 @@ class _PokemonManagerState extends State<PokemonManager> {
         ),
       )
     ]);
-  }
-
-  void _addPokemon(Map<String, dynamic> pokemon) {
-    setState(() {
-      _pokemonList.add(pokemon);
-    });
-  }
-
-  void _deletePokemon(int index) {
-    setState(() {
-      _pokemonList.removeAt(index);
-    });
   }
 }

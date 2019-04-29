@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../pokemon_manager.dart';
-import './pokemon_admin_page.dart';
 
 class HomePage extends StatelessWidget {
+  final List<Map<String, String>> _pokemonList;
+  final Function _addPokemon;
+  final Function _deletePokemon;
+
+  HomePage(this._pokemonList, this._addPokemon, this._deletePokemon);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,10 +22,7 @@ class HomePage extends StatelessWidget {
             ListTile(
               title: Text('Manage Pokemon'),
               onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => PokemonAdminPage()));
+                Navigator.pushReplacementNamed(context, '/admin');
               },
             )
           ],
@@ -29,7 +31,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pokemon'),
       ),
-      body: PokemonManager(),
+      body: PokemonManager(_pokemonList, _addPokemon, _deletePokemon),
     );
   }
 }
