@@ -4,7 +4,17 @@ class PokemonAddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Add a Pokemon'),
+      child: RaisedButton(
+          child: Text('Add'),
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return Center(
+                    child: Text('Test Modal'),
+                  );
+                });
+          }),
     );
   }
 }

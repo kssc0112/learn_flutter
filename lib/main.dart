@@ -28,7 +28,6 @@ class _MyAppState extends State<MyApp> {
         '/': (BuildContext context) =>
             HomePage(_pokemonList, _addPokemon, _deletePokemon),
         '/admin': (BuildContext context) => PokemonAdminPage(),
-//        '/pokemon': (BuildContext context) => PokemonPage(),
       },
       onGenerateRoute: (RouteSettings routeSettings) {
         final List<String> pathElements = routeSettings.name.split('/');
