@@ -28,6 +28,7 @@ class Pokemons extends StatelessWidget {
                                     imageUrl: _pokemonList[index]['imageUrl'],
                                   ))).then((bool onValue) {
                         if (onValue) {
+                          print(onValue);
                           deletePokemon(index);
                         }
                       })
